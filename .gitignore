@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.pyo
+historial.txt
+logs.txt
+__init__.py
