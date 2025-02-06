@@ -1,16 +1,33 @@
 import time  # Para medir el tiempo transcurrido
 
+def cargar_configuracion():
+    precios = {"PARADO": 0.02, "MOVIMIENTO": 0.05}
+
+    try:
+        with open("config.txt", "r") as file:
+            for line in file:
+                clave, valor = line.strip().split("=")
+                precios[clave] = float(valor)
+    except FileNotFoundError:
+        print("Archivo de configuración no encontrado. Se utilizarán los valores predeterminados.")
+
+    return precios
+
 def mostrar_bienvenida():
     """Muestra el mensaje de bienvenida e instrucciones."""
-    print("\n Bienvenido al Taxímetro Digital s")
-    print("Este programa calcula la tarifa en función del tiempo del trayecto.")
-    print("Tarifas:")
-    print("  - Taxi detenido: 0.02€ por segundo")
-    print("  - Taxi en movimiento: 0.05€ por segundo")
-    print("Puedes finalizar el viaje en cualquier momento ingresando 'fin'.\n")
+    precios = cargar_configuracion()
+    if precios:
+        print("\n Bienvenido al Taxímetro Digital")
+        print("Este programa calcula la tarifa en función del tiempo del trayecto.")
+        print("Tarifas:")
+        print(f"  - Taxi detenido: {precios['PARADO']:.2f}€ por segundo")
+        print(f"  - Taxi en movimiento: {precios['MOVIMIENTO']:.2f}€ por segundo")
+        print("Puedes finalizar el viaje en cualquier momento ingresando 'fin'.\n")
+    else:
+        print("No se pudieron cargar las configuraciones.")
 
 def calcular_tarifa():
-    """Inicia y calcula el costo del trayecto."""
+    """Inicia y calcula el costo del trayecto."""   
     total = 0
     estado_actual = None
     tiempo_inicio = time.time()  # Guarda el tiempo de inicio 
@@ -22,11 +39,12 @@ def calcular_tarifa():
         tiempo_actual = time.time() # Obtiene el tiempo actual
         tiempo_transcurrido = tiempo_actual - tiempo_inicio  # Calcula tiempo desde el último estado
         
+        precios = cargar_configuracion()
 
         if estado_actual == "parado":
-            total += tiempo_transcurrido * 0.02  # 2 céntimos por segundo
+            total += tiempo_transcurrido * precios["PARADO"]  # 2 céntimos por segundo
         elif estado_actual == "movimiento":
-            total += tiempo_transcurrido * 0.05  # 5 céntimos por segundo
+            total += tiempo_transcurrido * precios["MOVIMIENTO"]  # 5 céntimos por segundo
         
         if entrada == "fin":
             break
