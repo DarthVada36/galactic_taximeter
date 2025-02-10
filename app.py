@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, jsonify
-
+from flask_socketio import SocketIO
 from taximetro import Taximetro
+import time
 
 
 app = Flask(__name__)
-
-
+socketio = SocketIO(app)  # Habilita WebSocket
 taximetro = Taximetro()
 
 
@@ -39,7 +39,7 @@ def change_state():
 
     # Asegurar que se devuelven siempre los valores correctos
     return jsonify({
-        "estado": nuevo_estado,  # El estado correcto
+        "estado": taximetro.estado_actual,  # El estado correcto
         "tarifa_acumulada": round(respuesta.get("tarifa_acumulada", 0.00), 2)
     })
 
@@ -53,6 +53,13 @@ def stop_trip():
         "tarifa_total": round(respuesta.get("tarifa_total", 0.00), 2)  
     })
 
+def actualizar_tarifa():
+    while True:
+        tarifa_actualizada = taximetro.obtener_tarifa_acumulada()  # Obtener tarifa actual
+        socketio.emit("update_tarifa", {"tarifa": tarifa_actualizada})  
+        time.sleep(0.5)  # Actualiza cada 0.5 segundos
+
 if __name__ == '__main__':
-    print("Iniciando Flask en: http://127.0.0.1:5000")
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    import threading
+    threading.Thread(target=actualizar_tarifa, daemon=True).start()
+    socketio.run(app, host='127.0.0.1', port=5000, debug=True)

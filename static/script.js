@@ -1,3 +1,11 @@
+// Conectar con WebSocket del servidor
+const socket = io.connect('http://127.0.0.1:5000');
+
+// Escuchar cambios en la tarifa en tiempo real
+socket.on("update_tarifa", function(data) {
+    document.getElementById('tarifa').textContent = data.tarifa.toFixed(2) + "€";
+});
+
 document.addEventListener("DOMContentLoaded", function() {
     fetch('/get_prices')
         .then(response => response.json())

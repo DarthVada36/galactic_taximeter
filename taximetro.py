@@ -71,29 +71,44 @@ class Taximetro:
         self.log_event(f"Estado cambiado a {self.estado_actual}.")
         return {"mensaje": f"Estado cambiado a {self.estado_actual}", "tarifa_acumulada": round(self.total, 2)}
 
+    def obtener_tarifa_acumulada(self):
+        if self.tiempo_inicio:  # Asegurar que hay un viaje en curso
+            tiempo_actual = time.time()
+            tiempo_transcurrido = tiempo_actual - self.tiempo_inicio
+            return round(self.total + self.calcular_costo(self.estado_actual, tiempo_transcurrido), 2)
+        
+        return round(self.total, 2)
+
+
     def finalizar_viaje(self):
         # Calcular la tarifa final si el taxi está en movimiento
         if self.estado_actual == "MOVIMIENTO":
             tiempo_actual = time.time()
             tiempo_transcurrido = tiempo_actual - self.tiempo_inicio
             self.total += self.calcular_costo(self.estado_actual, tiempo_transcurrido)
-        
+
         # Guardar la tarifa final en el archivo historial
         timestamp = time.time()
         fecha = datetime.fromtimestamp(timestamp)
         fecha_formateada = fecha.strftime('%Y-%m-%d %H:%M:%S')
-        
+
         with open('historial.txt', 'a', encoding="utf-8") as file:
             file.write(f"Fecha: {fecha_formateada} - Tarifa: {self.total:.2f}€\n")
 
-        # Resetear la tarifa y el estado para un nuevo viaje
+        # Guardar la tarifa total antes de reiniciar
         tarifa_total = round(self.total, 2)
-        self.estado_actual = "PARADO"
-        self.total = 0
-        self.tiempo_inicio = None
+
+        # Cambiar el estado a "FINALIZADO" en lugar de resetear todo
+        self.estado_actual = "FINALIZADO"
+        self.tiempo_inicio = None  # Para que no siga acumulando tiempo
+
         self.log_event(f"Viaje finalizado. Tarifa total: {tarifa_total}€")
-        
-        return {"mensaje": f"Viaje finalizado. Tarifa total: {tarifa_total}€", "estado": self.estado_actual, "tarifa_total": tarifa_total}
+
+        return {
+            "mensaje": f"Viaje finalizado. Tarifa total: {tarifa_total}€",
+            "estado": self.estado_actual, 
+            "tarifa_total": tarifa_total
+        }
 
 
 
