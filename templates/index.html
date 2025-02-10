@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxímetro Digital</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Taxímetro Digital</h1>
+
+    <p id="tarifa-parado">Tarifa Parado: Cargando...</p>
+<p id="tarifa-movimiento">Tarifa Movimiento: Cargando...</p>
+    <p id="estado">Estado: PARADO</p>
+    <p id="tarifa">Tarifa: 0.00€</p>
+
+    <!-- Botón para iniciar el viaje -->
+    <button id="iniciar-viaje">Iniciar Viaje</button>
+    
+    <!-- Botón para cambiar el estado -->
+    <button id="cambiar-estado">Cambiar Estado</button>
+    
+    <!-- Botón para finalizar el viaje -->
+    <button id="finalizar-viaje">Finalizar Viaje</button>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

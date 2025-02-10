@@ -1,0 +1,4 @@
+PRECIOS = {
+    "PARADO": 0.09,
+    "MOVIMIENTO": 0.10
+}
