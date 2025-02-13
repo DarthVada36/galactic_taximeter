@@ -1,9 +1,43 @@
+colors {
+    "primary": "#0098db",
+    "secondary": "#0ce6f2",
+    "success": "#17001d",
+    "danger": "#270022",
+    "warning": "#450327",
+    "info": "#660f31",
+    "light": "#9c173b",
+    "dark": "#ff0546,
+    "white": "#1e579c",
+    "black": "#09010d"
+}
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
 }
 button {
+    border-radius: 5px;
+    background-color: #450327;
     margin: 10px;
     padding: 10px;
     font-size: 16px;
+}
+
+.botones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    color: #ff0546;
+    font-size: 36px;
+    margin-top: 20px;
+}
+
+.container {
+    background-color: #09010d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
