@@ -1,4 +1,4 @@
-colors {
+/* colors {
     "primary": "#0098db",
     "secondary": "#0ce6f2",
     "success": "#17001d",
@@ -9,35 +9,158 @@ colors {
     "dark": "#ff0546,
     "white": "#1e579c",
     "black": "#09010d"
+} */
+
+@font-face {
+    font-family: 'Refinery-SemiBold';
+    src: url('../static/fonts/Refinery-SemiBold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BlenderPro-Book';
+    src: url('../static/fonts/BlenderPro-Book.woff2') format('woff2');
+    font-weight: lighter;
+    font-style: light;
+}
+
+@font-face {
+    font-family: 'BlenderPro-Bold';
+    src: url('../static/fonts/BlenderPro-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    background-color:#0d0d0d ;
+    color: #f8f8f8;
+    font-family: 'BlenderPro-Book', sans-serif;
     text-align: center;
-}
-button {
-    border-radius: 5px;
-    background-color: #450327;
-    margin: 10px;
-    padding: 10px;
-    font-size: 16px;
+    margin: 0;
+    padding: 0;
 }
 
-.botones{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 h1 {
-    color: #ff0546;
-    font-size: 36px;
-    margin-top: 20px;
+    font-family: 'Refinery-SemiBold', sans-serif;
+    font-size: 2em;
+    margin: .67em 0;
+    color: #fcee0a;
+}
+
+h2 {
+    font-family: 'BlenderPro-Book', sans-serif;
+    font-size: 1.5em;
+    margin: .83em 0;
+    color: #f8f8f8;
 }
 
 .container {
-    background-color: #09010d;
-    display: flex;
-    justify-content: center;
+    position: relative;
+    background-color: rgba(9, 1, 13, 0.8);
+    border: 3px solid #fcee0a;
+    padding: 20px;
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+    clip-path: polygon(0% 10%, 10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%);
+    box-shadow: 0px 0px 20px #fcee0a;
+}
+
+button {
+    background: #00f0ff;
+    border: none;
+    color: #0d0d0d;
+    font-size: 18px;
+    padding: 12px 25px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid #ffcc00;
+    clip-path: polygon(10% 0%, 90% 0%, 100% 20%, 100% 80%, 90% 100%, 10% 100%, 0% 80%, 0% 20%);
+}
+
+button:hover {
+    box-shadow: 0px 0px 15px #ffcc00;
+    transform: scale(1.1);
+}
+
+.title-tarifa {
+    font-size: 36px;
+    color: #00f0ff;
+    margin: 10px 0;
+    text-transform: uppercase;
+}
+
+
+.tarifas {
+    font-size: 28px;
+    color: #ff0546;
+    text-shadow: 0px 0px 10px #ff0546;
+    margin: 10px 0;
+}
+
+.estado {
+    font-size: 22px;
+    color: #00ffcc;
+    text-shadow: 0px 0px 5px #00ffcc;
+    margin: 10px 0;
+}
+
+
+/* .intro__header {
     align-items: center;
-    height: 100vh;
+    background: linear-gradient(90deg,#fcee0a 2px,transparent 0) 0 0,linear-gradient(90deg,#fcee0a 2px,transparent 0) 0 100%,linear-gradient(270deg,#fcee0a 2px,transparent 0) 100% 0,linear-gradient(270deg,#fcee0a 2px,transparent 0) 100% 100%,linear-gradient(180deg,#fcee0a 2px,transparent 0) 0 0,linear-gradient(180deg,#fcee0a 2px,transparent 0) 100% 0,linear-gradient(0deg,#fcee0a 2px,transparent 0) 0 100%,linear-gradient(0deg,#fcee0a 2px,transparent 0) 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin: -2px 0;
+    max-width: 800px;
+    padding: 88px 48px 0;
+    text-align: center
+} */
+
+/* Estilo para los formularios de login y register */
+.form-container {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid #ff009d;
+    border-radius: 10px;
+    padding: 20px;
+    width: 40%;
+    margin: auto;
+    margin-top: 50px;
+    box-shadow: 0px 0px 20px #ff009d;
+}
+
+input[type='text'], input[type='password'] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #00ffcc;
+    border-radius: 5px;
+    background: black;
+    color: #f8f8f8;
+}
+
+input[type='submit'] {
+    background: linear-gradient(45deg, #00ffcc, #ff009d);
+    border: none;
+    color: #0d0d0d;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+input[type='submit']:hover {
+    box-shadow: 0px 0px 15px #ff009d;
+    transform: scale(1.1);
 }

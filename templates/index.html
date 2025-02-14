@@ -1,38 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Taxímetro Digital</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body class="container">
-    <div class="header">
-        <h1>Bienvenido a Delamain</h1>
-        <h2>El mejor servicio de Taxi de Night City</h2>
-    </div>
-    
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-    <div class="tarifas">
-        <h3>Tarifas oficiales (no truqueadas)</h3>
-        <p id="tarifa-parado">Tarifa Stop: Cargando...</p>
-        <p id="tarifa-movimiento">Tarifa en Movimiento: Cargando...</p>
-            <p id="estado">Estado: PARADO</p>
-            <p id="tarifa">Tarifa: 0.00€</p>
-    </div>
-    
-    <div class="botones">
+  <body>
+    <nav class="navbar">
+        <button class="logout">
+            Salir <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+        </button>
+        
+    </nav>
+    <div class="container">
+      <div class="header">
+        <h1 class="welcome">BIENVENIDO AL TAXIMETRO DE DELAMAIN</h1>
+        <h2>El mejor servicio de Taxi de Night City</h2>
+      </div>
+
+      <div class="tarifa">
+        <h3 class="title-tarifa">Tarifas oficiales (no truqueadas)</h3>
+        <div class="tarifas">
+          <p id="tarifa-parado">Tarifa Stop: Cargando...</p>
+          <p id="tarifa-movimiento">Tarifa en Movimiento: Cargando...</p>
+        </div>
+        <div class="estado">
+          <p id="estado">Estado: PARADO</p>
+          <p id="tarifa">Tarifa: 0.00€</p>
+        </div>
+      </div>
+
+      <div class="botones">
         <!-- Botón para iniciar el viaje -->
         <button id="iniciar-viaje">Iniciar Viaje</button>
-        
+
         <!-- Botón para cambiar el estado -->
-        <button id="cambiar-estado">Cambiar Estado</button>
-        
+        <button id="cambiar-estado">Parar/Seguir</button>
+
         <!-- Botón para finalizar el viaje -->
         <button id="finalizar-viaje">Finalizar Viaje</button>
-    </div>
+      </div>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
+      <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </div>
+  </body>
 </html>
