@@ -1,7 +1,7 @@
-# 🚕 Taxímetro Digital - Cyberpunk 2077 Style
+# 🚕 Taxímetro Digital - Cyberpunk 2077
 
 ## 📌 Descripción
-Este es un **taxímetro digital** inspirado en el universo de **Cyberpunk 2077**. Permite a los conductores calcular tarifas en función del tiempo y el movimiento del vehículo, registrando el historial de viajes. La interfaz está diseñada con una estética futurista y cuenta con autenticación de usuario para mayor seguridad.
+Este es un **taxímetro digital** inspirado en el universo de **Cyberpunk 2077**. desarrollado con Flask para el backend y HTML/CSS/JavaScript para el frontend. Permite simular el funcionamiento de un taxímetro real, calculando tarifas en función del estado del viaje (en movimiento o detenido).
 
 ## 🚀 Características
 - 🌐 **Aplicación web con Flask**
@@ -38,7 +38,7 @@ Este es un **taxímetro digital** inspirado en el universo de **Cyberpunk 2077**
 ## 📥 Instalación y Uso
 ### 🔧 **1. Clonar el repositorio**
 ```bash
-git clone https://github.com/tuusuario/taximetro-cyberpunk.git
+git clone https://github.com/DarthVada36/galactic_taximeter.git
 cd taximetro-cyberpunk
 ```
 
@@ -60,9 +60,29 @@ python app.py
 ```
 Visita [http://127.0.0.1:5000/](http://127.0.0.1:5000/) en tu navegador.
 
+## Uso
+
+### Botones y funciones
+
+- **Iniciar Viaje:** Comienza el viaje y cambia el estado a MOVIMIENTO.
+- **Parar/Seguir:** Alterna entre MOVIMIENTO y PARADO.
+- **Finalizar Viaje:** Termina el viaje y guarda el historial.
+
+### Estados 
+
+- **PARADO:** El taxi está detenido y se usa la tarifa de espera.
+- **MOVIMIENTO:** El taxi está en marcha y se usa la tarifa de recorrido.
+
+## Mejoras futuras
+
+- Implementar una base de datos en lugar de archivos JSON.
+- Agregar múltiples opciones de personalización de tarifas.
+- Crear una versión web completamente responsiva.
+
 ## 📜 Licencia
 Este proyecto está bajo la licencia **MIT**. Puedes usarlo y modificarlo libremente.
 
 ---
-💾 **Desarrollado por:** *Tu Nombre o Usuario* | 🚀 *Cyberpunk Taxi System*
+💾 **Desarrollado por:** *DarthVada36* | 🚀 *Cyberpunk Taxi System*
+**Proyecto desarrollado con ❤️ y mucha inspiración Cyberpunk.**
 
