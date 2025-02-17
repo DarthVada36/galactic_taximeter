@@ -19,17 +19,30 @@
 
   <body>
     <nav class="navbar">
-        <button class="logout">
-            Salir <a href="{{ url_for('logout') }}">Cerrar sesión</a>
-        </button>
-        
-    </nav>
-    <div class="container">
-      <div class="header">
-        <h1 class="welcome">BIENVENIDO AL TAXIMETRO DE DELAMAIN</h1>
-        <h2>El mejor servicio de Taxi de Night City</h2>
+      <div class="header-top">
+        <a href="https://www.cyberpunk.net/us/es/" class="header-top__logo header-top__logo--black-desktop  ">
+          <img src="https://www.cyberpunk.net/build/images/home8/logo-franchise-yellow-en@1x-b4c9e65b.png" alt="logo-franchise-yellow-en">
+        </a>
+        <ul class="menu-list">
+          <li>
+            <button id="complaints">Quejas y Sugerencias</button>
+          </li>
+          <li>
+            <button id="logout-button">Cerrar Sesión</button>
+          </li>
+        </ul>
       </div>
-
+      
+    </nav>
+    <section class="main-container">
+      <div>
+        <div class="header">
+          <h1 class="welcome">BIENVENIDO AL TAXIMETRO DE DELAMAIN</h1>
+          <h2>El mejor servicio de Taxi de Night City</h2>
+        </div>
+      </div>
+    </section>
+    <div class="container">
       <div class="tarifa">
         <h3 class="title-tarifa">Tarifas oficiales (no truqueadas)</h3>
         <div class="tarifas">
@@ -44,16 +57,25 @@
 
       <div class="botones">
         <!-- Botón para iniciar el viaje -->
-        <button id="iniciar-viaje">Iniciar Viaje</button>
+        <button id="iniciar-viaje" class="cp-btn cp-btn-blue">
+          <span>Iniciar Viaje</span>
+        </button>
 
         <!-- Botón para cambiar el estado -->
-        <button id="cambiar-estado">Parar/Seguir</button>
+        <button id="cambiar-estado" class="cp-btn cp-btn-black">
+          <span>Parar/Seguir</span>
+        </button>
 
         <!-- Botón para finalizar el viaje -->
-        <button id="finalizar-viaje">Finalizar Viaje</button>
+        <button id="finalizar-viaje" class="cp-btn cp-btn-black">
+          <span>Finalizar Viaje</span>
+        </button>
       </div>
 
       <script src="{{ url_for('static', filename='script.js') }}"></script>
     </div>
+    <footer>
+      <div class="footer-container">
+    </footer>
   </body>
 </html>

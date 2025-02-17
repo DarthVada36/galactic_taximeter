@@ -5,3 +5,4 @@ historial.txt
 logs.txt
 __init__.py
 venv/
+users.json

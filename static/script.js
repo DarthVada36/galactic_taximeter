@@ -58,3 +58,7 @@ document.getElementById('finalizar-viaje').addEventListener('click', function() 
         })
         .catch(error => console.error("Error al finalizar viaje:", error));
 });
+
+document.getElementById("logout-button").addEventListener("click", function () {
+    window.location.href = "/logout";
+});
