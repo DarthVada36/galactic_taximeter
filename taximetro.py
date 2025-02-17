@@ -112,76 +112,76 @@ class Taximetro:
 
 
 
-    # def calcular_tarifa(self, inputs=None):
-    #     print("\n✅ Trayecto iniciado. Usa 'parado', 'movimiento' o 'fin' para controlar el estado del taxi.")
-    #     index = 0
-    #     while True:
-    #         if inputs:
-    #             if index >= len(inputs):
-    #                 break
-    #             entrada = inputs[index]
-    #             index += 1
-    #         else:
-    #             entrada = input("Estado del taxi (parado/movimiento/fin): ").strip().lower()
+    def calcular_tarifa(self, inputs=None):
+        print("\n✅ Trayecto iniciado. Usa 'parado', 'movimiento' o 'fin' para controlar el estado del taxi.")
+        index = 0
+        while True:
+            if inputs:
+                if index >= len(inputs):
+                    break
+                entrada = inputs[index]
+                index += 1
+            else:
+                entrada = input("Estado del taxi (parado/movimiento/fin): ").strip().lower()
             
-    #         tiempo_actual = time.time()
-    #         tiempo_transcurrido = tiempo_actual - self.tiempo_inicio
+            tiempo_actual = time.time()
+            tiempo_transcurrido = tiempo_actual - self.tiempo_inicio
             
-    #         if entrada == "fin":
-    #             self.total += self.calcular_costo(self.estado_actual, tiempo_transcurrido)
-    #             self.guardar_historial()
-    #             self.log_event(f"Trayecto finalizado. Tarifa total: {self.total:.2f}€")
-    #             print(f"🚖 Viaje finalizado. Tarifa total: {self.total:.2f}€\n")
-    #             print("👋 ¡Gracias por Viajar con nosotros!")
-    #             return  # Volver al menú principal
+            if entrada == "fin":
+                self.total += self.calcular_costo(self.estado_actual, tiempo_transcurrido)
+                self.guardar_historial()
+                self.log_event(f"Trayecto finalizado. Tarifa total: {self.total:.2f}€")
+                print(f"🚖 Viaje finalizado. Tarifa total: {self.total:.2f}€\n")
+                print("👋 ¡Gracias por Viajar con nosotros!")
+                return  # Volver al menú principal
             
-    #         if entrada in ["parado", "movimiento"]:
-    #             self.total += self.calcular_costo(self.estado_actual, tiempo_transcurrido)
-    #             self.estado_actual = entrada.upper()
-    #             self.tiempo_inicio = time.time()
-    #             self.log_event(f"Estado cambiado a: {self.estado_actual}")
-    #         else:
-    #             print("❌ Estado inválido. Ingresa 'parado' o 'movimiento'.")
-    #             self.log_event(f"Entrada inválida: {entrada}", level="warning")
+            if entrada in ["parado", "movimiento"]:
+                self.total += self.calcular_costo(self.estado_actual, tiempo_transcurrido)
+                self.estado_actual = entrada.upper()
+                self.tiempo_inicio = time.time()
+                self.log_event(f"Estado cambiado a: {self.estado_actual}")
+            else:
+                print("❌ Estado inválido. Ingresa 'parado' o 'movimiento'.")
+                self.log_event(f"Entrada inválida: {entrada}", level="warning")
             
-    #         print(f"💰 Tarifa acumulada: {self.total:.2f}€")
+            print(f"💰 Tarifa acumulada: {self.total:.2f}€")
     
-    # def mostrar_bienvenida(self):
-    #     print("\n🚖 Bienvenido al Taxímetro Digital")
-    #     print("Este programa calcula la tarifa en función del tiempo del trayecto.")
-    #     print("Tarifas:")
-    #     print(f"  - Taxi detenido: {self.precios['PARADO']:.2f}€ por segundo")
-    #     print(f"  - Taxi en movimiento: {self.precios['MOVIMIENTO']:.2f}€ por segundo")
-    #     print("Puedes finalizar el viaje en cualquier momento ingresando 'fin'.\n")
+    def mostrar_bienvenida(self):
+        print("\n🚖 Bienvenido al Taxímetro Digital")
+        print("Este programa calcula la tarifa en función del tiempo del trayecto.")
+        print("Tarifas:")
+        print(f"  - Taxi detenido: {self.precios['PARADO']:.2f}€ por segundo")
+        print(f"  - Taxi en movimiento: {self.precios['MOVIMIENTO']:.2f}€ por segundo")
+        print("Puedes finalizar el viaje en cualquier momento ingresando 'fin'.\n")
     
-    # def iniciar(self, inputs=None):
-    #     while True:
-    #         self.log_event("Programa iniciado.")
-    #         self.mostrar_bienvenida()
-    #         index = 0
-    #         while True:
-    #             if inputs:
-    #                 if index >= len(inputs):
-    #                     return
-    #                 opcion = inputs[index]
-    #                 index += 1
-    #             else:
-    #                 opcion = input("¿Quieres iniciar un trayecto? (s/n): ").strip().lower()
+    def iniciar(self, inputs=None):
+        while True:
+            self.log_event("Programa iniciado.")
+            self.mostrar_bienvenida()
+            index = 0
+            while True:
+                if inputs:
+                    if index >= len(inputs):
+                        return
+                    opcion = inputs[index]
+                    index += 1
+                else:
+                    opcion = input("¿Quieres iniciar un trayecto? (s/n): ").strip().lower()
                 
-    #             if opcion == "s":
-    #                 self.log_event("Iniciando un nuevo trayecto.")
-    #                 self.total = 0  # Reiniciar tarifa
-    #                 self.estado_actual = "PARADO"
-    #                 self.tiempo_inicio = time.time()
-    #                 self.calcular_tarifa()
-    #                 break  # Volver al inicio del loop para preguntar otra vez
-    #             elif opcion == "n":
-    #                 self.log_event("Saliendo del programa.")
-    #                 print("👋 Gracias por usar el taxímetro. ¡Hasta luego!")
-    #                 return
-    #             else:
-    #                 print("❌ Opción inválida. Ingresa 's' para iniciar o 'n' para salir.")
-    #                 self.log_event(f"Entrada inválida: {opcion}", level="warning")
+                if opcion == "s":
+                    self.log_event("Iniciando un nuevo trayecto.")
+                    self.total = 0  # Reiniciar tarifa
+                    self.estado_actual = "PARADO"
+                    self.tiempo_inicio = time.time()
+                    self.calcular_tarifa()
+                    break  # Volver al inicio del loop para preguntar otra vez
+                elif opcion == "n":
+                    self.log_event("Saliendo del programa.")
+                    print("👋 Gracias por usar el taxímetro. ¡Hasta luego!")
+                    return
+                else:
+                    print("❌ Opción inválida. Ingresa 's' para iniciar o 'n' para salir.")
+                    self.log_event(f"Entrada inválida: {opcion}", level="warning")
 
 if __name__ == "__main__":
     taximetro = Taximetro()

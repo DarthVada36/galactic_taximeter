@@ -1,16 +1,43 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <form method="POST" class="form-container">
-        <label>Usuario:</label>
-        <input type="text" name="username" required>
-        <label>Contraseña:</label>
-        <input type="password" name="password" required>
-        <button type="submit">Registrarse</button>
-    </form>
+    <div class="login-container">
+        <div class="login-navbar">
+            <!-- Aquí puedes poner el logo o elementos del navbar -->
+            <ul>
+                <li><img src="../static/images/logo-franchise-black-en@1x-567991b0.png" alt="Logo"></li>
+                <li><span>Registrarse</span></li>
+            </ul>
+        </div>
+
+        <div class="form-container">
+            <form method="POST" class="form-register">
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" name="username" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" name="password" id="password" required>
+                </div>
+                <button type="submit" class="submit">Registrarse</button>
+            </form>
+        </div>
+        
+        <footer>
+            <div class="footer-container-black">
+                <p>Este es un proyecto sin fines de lucro y de carácter personal y educativo</p>
+                <p>Visita mi GitHub</p>
+                <p>© 2077 Delamain | DarthVada36</p>
+            </div>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

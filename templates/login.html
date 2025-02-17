@@ -1,20 +1,48 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='styles.css') }}"
-    />
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body>
-    <form method="POST" class="form-container">
-        <label>Usuario:</label>
-        <input type="text" name="username" required>
-        <label>Contraseña:</label>
-        <input type="password" name="password" required>
-        <button type="submit">Iniciar sesión</button>
-    </form>
+<body class="login-container">
+    <header>
+        <nav class="login-navbar">
+            <ul>
+                <li><img src="../static/images/logo-franchise-black-en@1x-567991b0.png" alt="Logo"></li>
+                <li><span>Quejas y sugerencias</span></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-section">
+        <div>
+            <h1 class="welcome-black">
+                Servicio de Taximetro de Delamain
+            </h1>
+        </div>
+        <div class="form-container">
+            <form method="POST">
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="submit">Iniciar sesión</button>
+                <span>¿No tienes cuenta? Crea una <a href="register.html">aquí</a></span>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container-black">
+            <p>Este es un proyecto sin fines de lucro y de carácter personal y educativo</p>
+            <p>Visita mi GitHub</p>
+            <p>© 2077 Delamain | DarthVada36</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

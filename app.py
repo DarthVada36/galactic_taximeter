@@ -28,7 +28,7 @@ def load_user(user_id):
 @app.route("/dashboard")
 @login_required
 def dashboard():
-    return render_template("index.html")
+    return render_template("index.html", username=current_user.username)
 
 # Rutas de autenticación
 @app.route("/register", methods=["GET", "POST"])

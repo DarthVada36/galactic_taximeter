@@ -20,15 +20,22 @@
   <body>
     <nav class="navbar">
       <div class="header-top">
-        <a href="https://www.cyberpunk.net/us/es/" class="header-top__logo header-top__logo--black-desktop  ">
+        <a href="https://www.cyberpunk.net/us/es/" class="header-top__logo">
           <img src="https://www.cyberpunk.net/build/images/home8/logo-franchise-yellow-en@1x-b4c9e65b.png" alt="logo-franchise-yellow-en">
         </a>
         <ul class="menu-list">
-          <li>
-            <button id="complaints">Quejas y Sugerencias</button>
+          <li  class="username">
+            <span>
+              BIENVENIDO, <span id="username" class="username-hig">{{ current_user.username }}</span>
+            </span>
           </li>
-          <li>
-            <button id="logout-button">Cerrar Sesión</button>
+          <li class="complaints-button">
+            <span>
+              Quejas y sugerencias
+            </span>
+          </li>
+          <li class="logout-button">
+            <a href="{{ url_for('logout') }}">Cerrar Sesión</a>
           </li>
         </ul>
       </div>
@@ -38,10 +45,13 @@
       <div>
         <div class="header">
           <h1 class="welcome">BIENVENIDO AL TAXIMETRO DE DELAMAIN</h1>
-          <h2>El mejor servicio de Taxi de Night City</h2>
+          <h2 class="description">El mejor servicio de Taxis de Night City :3 </h2>
         </div>
       </div>
     </section>
+    <section class="news">
+
+    
     <div class="container">
       <div class="tarifa">
         <h3 class="title-tarifa">Tarifas oficiales (no truqueadas)</h3>
@@ -54,6 +64,7 @@
           <p id="tarifa">Tarifa: 0.00€</p>
         </div>
       </div>
+    
 
       <div class="botones">
         <!-- Botón para iniciar el viaje -->
@@ -62,7 +73,7 @@
         </button>
 
         <!-- Botón para cambiar el estado -->
-        <button id="cambiar-estado" class="cp-btn cp-btn-black">
+        <button id="cambiar-estado" class="cp-btn cp-btn-blue">
           <span>Parar/Seguir</span>
         </button>
 
@@ -71,11 +82,23 @@
           <span>Finalizar Viaje</span>
         </button>
       </div>
-
-      <script src="{{ url_for('static', filename='script.js') }}"></script>
+      
+      
     </div>
+    <div class="news__decor-bottom">
+      /// FEATURES.MODULE<br>
+      loading...
+    </div>
+  </section>
+
+
     <footer>
       <div class="footer-container">
+        <p>Este es un proyecto sin fines de lucro y de caracter personal y educativo</p>
+        <p>Visita mi GitHub </p>
+        <p>© 2077 Delamain | DarthVada36 </p>
+      </div>
     </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
