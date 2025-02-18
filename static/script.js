@@ -1,7 +1,5 @@
-// Conectar con WebSocket del servidor
 const socket = io.connect('http://127.0.0.1:5000');
 
-// Escuchar cambios en la tarifa en tiempo real
 socket.on("update_tarifa", function(data) {
     document.getElementById('tarifa').textContent = data.tarifa.toFixed(2) + "€";
 });
@@ -28,7 +26,7 @@ document.getElementById('cambiar-estado').addEventListener('click', function() {
     const estadoElemento = document.getElementById('estado');
     const tarifaElemento = document.getElementById('tarifa');
 
-    // Obtener estado actual desde el DOM
+    
     let estadoActual = estadoElemento.textContent.split(": ")[1];
     let nuevoEstado = (estadoActual === "MOVIMIENTO") ? "PARADO" : "MOVIMIENTO";
 
@@ -60,6 +58,6 @@ document.getElementById('finalizar-viaje').addEventListener('click', function() 
 });
 
 document.querySelector(".logout-button a").addEventListener("click", function (e) {
-    e.preventDefault(); // Para evitar que el enlace se ejecute inmediatamente
+    e.preventDefault();
     window.location.href = "/logout";
 });

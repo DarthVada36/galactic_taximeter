@@ -1,7 +1,7 @@
 import unittest
 import time
 import os
-import taxi  # Importamos nuestro código principal
+import taxi
 
 class TestTaximetro(unittest.TestCase):
     
@@ -33,19 +33,19 @@ class TestTaximetro(unittest.TestCase):
         """Verifica que la tarifa final se guarda correctamente en un archivo de prueba."""
         tarifa_prueba = f"Fecha: {time.strftime('%Y-%m-%d %H:%M:%S')} - Tarifa: 5.00€"
 
-        # Escribir en el archivo de prueba, no en historial.txt
+        
         with open(self.test_historial_file, "w", encoding="utf-8") as file:
             file.write("")
 
-        # Simular la escritura en el historial de prueba
+        
         with open(self.test_historial_file, "a", encoding="utf-8") as file:
             file.write(tarifa_prueba + "\n")
 
-        # Leer el contenido del archivo de prueba
+        
         with open(self.test_historial_file, "r", encoding="utf-8") as file:
             contenido = file.read()
 
-        self.assertIn(tarifa_prueba, contenido)  # Verificamos que la tarifa está en el archivo de prueba
+        self.assertIn(tarifa_prueba, contenido) 
 
 if __name__ == '__main__':
     unittest.main()

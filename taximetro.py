@@ -60,19 +60,19 @@ class Taximetro:
         if self.estado_actual == nuevo_estado:
             return {"error": "El taxi ya está en ese estado."}
 
-        # Calcular el tiempo transcurrido y acumular la tarifa
+        
         tiempo_actual = time.time()
         tiempo_transcurrido = tiempo_actual - self.tiempo_inicio
         self.total += self.calcular_costo(self.estado_actual, tiempo_transcurrido)
 
-        # Cambiar el estado y resetear el tiempo de inicio
+        
         self.estado_actual = nuevo_estado
         self.tiempo_inicio = time.time()
         self.log_event(f"Estado cambiado a {self.estado_actual}.")
         return {"mensaje": f"Estado cambiado a {self.estado_actual}", "tarifa_acumulada": round(self.total, 2)}
 
     def obtener_tarifa_acumulada(self):
-        if self.tiempo_inicio:  # Asegurar que hay un viaje en curso
+        if self.tiempo_inicio:  
             tiempo_actual = time.time()
             tiempo_transcurrido = tiempo_actual - self.tiempo_inicio
             return round(self.total + self.calcular_costo(self.estado_actual, tiempo_transcurrido), 2)
@@ -81,13 +81,13 @@ class Taximetro:
 
 
     def finalizar_viaje(self):
-        # Calcular la tarifa final si el taxi está en movimiento
+        
         if self.estado_actual == "MOVIMIENTO":
             tiempo_actual = time.time()
             tiempo_transcurrido = tiempo_actual - self.tiempo_inicio
             self.total += self.calcular_costo(self.estado_actual, tiempo_transcurrido)
 
-        # Guardar la tarifa final en el archivo historial
+        
         timestamp = time.time()
         fecha = datetime.fromtimestamp(timestamp)
         fecha_formateada = fecha.strftime('%Y-%m-%d %H:%M:%S')
@@ -95,12 +95,12 @@ class Taximetro:
         with open('historial.txt', 'a', encoding="utf-8") as file:
             file.write(f"Fecha: {fecha_formateada} - Tarifa: {self.total:.2f}€\n")
 
-        # Guardar la tarifa total antes de reiniciar
+        
         tarifa_total = round(self.total, 2)
 
-        # Cambiar el estado a "FINALIZADO" en lugar de resetear todo
+        
         self.estado_actual = "FINALIZADO"
-        self.tiempo_inicio = None  # Para que no siga acumulando tiempo
+        self.tiempo_inicio = None 
 
         self.log_event(f"Viaje finalizado. Tarifa total: {tarifa_total}€")
 
@@ -170,11 +170,11 @@ class Taximetro:
                 
                 if opcion == "s":
                     self.log_event("Iniciando un nuevo trayecto.")
-                    self.total = 0  # Reiniciar tarifa
+                    self.total = 0  
                     self.estado_actual = "PARADO"
                     self.tiempo_inicio = time.time()
                     self.calcular_tarifa()
-                    break  # Volver al inicio del loop para preguntar otra vez
+                    break  
                 elif opcion == "n":
                     self.log_event("Saliendo del programa.")
                     print("👋 Gracias por usar el taxímetro. ¡Hasta luego!")

@@ -1,7 +1,7 @@
-import time  # Para medir el tiempo transcurrido
+import time  
 import logging
 
-# Configuración de registro
+
 logging.basicConfig(filename="logs.txt",
                     level=logging.INFO,
                     format="%(asctime)s - %(levelname)s - %(message)s",
@@ -43,7 +43,7 @@ def log_event(message, level="info", save_to_historial=False):
     elif level == "warning":
         logging.warning(message)
 
-    # Solo guardar tarifas finales en historial.txt
+    
     if save_to_historial:
         with open("historial.txt", "a", encoding="utf-8") as file:
             file.write(f"Fecha: {time.strftime('%Y-%m-%d %H:%M:%S')} - Tarifa: {message.split(': ')[-1]}\n")
@@ -58,14 +58,14 @@ def calcular_tarifa(precios):
     """Inicia y calcula el costo del trayecto."""   
     total = 0
     estado_actual = "PARADO"
-    tiempo_inicio = time.time()  # Guarda el tiempo de inicio 
+    tiempo_inicio = time.time() 
     print("\n✅ Trayecto iniciado. Escribe 'parado' o 'movimiento' según el estado del taxi.")
     
     
     while True:
         entrada = input("Estado del taxi (parado/movimiento/fin): ").strip().lower()
-        tiempo_actual = time.time() # Obtiene el tiempo actual
-        tiempo_transcurrido = tiempo_actual - tiempo_inicio  # Calcula tiempo desde el último estado
+        tiempo_actual = time.time() 
+        tiempo_transcurrido = tiempo_actual - tiempo_inicio  
 
         
         if entrada == "fin":
@@ -74,10 +74,10 @@ def calcular_tarifa(precios):
             break
 
         if entrada in ["parado", "movimiento"]:
-            # Calculamos el costo antes de cambiar de estado
+            
             total += calcular_costo(estado_actual, tiempo_transcurrido, precios)
             estado_actual = entrada.upper()
-            tiempo_inicio = time.time()  # Reiniciar el contador de tiempo
+            tiempo_inicio = time.time()  
             log_event(f"Estado cambiado a: {estado_actual}")
         else:
             print("❌ Estado inválido. Ingresa 'parado' o 'movimiento'.")
@@ -107,6 +107,6 @@ def main():
             print("❌ Opción inválida. Ingresa 's' para iniciar o 'n' para salir.")
             log_event(f"Entrada inválida: {opcion}", level="warning")
 
-# Ejecutar el programa solo si se ejecuta directamente
+
 if __name__ == "__main__":
     main()

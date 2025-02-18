@@ -16,18 +16,18 @@ class User(UserMixin):
 # Cargar usuarios desde JSON
 def load_users():
     """Carga los usuarios desde el archivo JSON."""
-    if not os.path.exists(USERS_FILE):  # Si el archivo no existe, crearlo vacío
-        save_users({})  # Guarda un diccionario vacío en users.json
+    if not os.path.exists(USERS_FILE):
+        save_users({})
         return {}
 
     with open(USERS_FILE, "r", encoding="utf-8") as file:
         try:
             data = json.load(file)
-            if not isinstance(data, dict):  # Asegurar que es un diccionario
+            if not isinstance(data, dict):
                 return {}
             return data
-        except json.JSONDecodeError:  # Si el archivo está mal formateado
-            return {}  # Devuelve un diccionario vacío en lugar de fallar
+        except json.JSONDecodeError:
+            return {}
 
 # Guardar usuarios en JSON
 def save_users(users):
@@ -41,7 +41,7 @@ def register_user(username, password):
     users = load_users()
 
     if username in users:
-        return False  # Usuario ya existe
+        return False  
 
     hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
     user_id = str(len(users) + 1)
@@ -51,7 +51,7 @@ def register_user(username, password):
         "password": hashed_password
     }
     save_users(users)
-    return True  # Registro exitoso
+    return True  
 
 # Autenticar usuario
 def authenticate_user(username, password):
@@ -61,4 +61,4 @@ def authenticate_user(username, password):
         if user["username"] == username and bcrypt.check_password_hash(user["password"], password):
             return User(user_id, username, user["password"])  # Usuario autenticado
     
-    return None  # Credenciales incorrectas
+    return None 

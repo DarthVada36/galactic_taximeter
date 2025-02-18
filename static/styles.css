@@ -121,8 +121,8 @@ body {
 }
 
 .username-highlight {
-    color: #fcee0a;  /* Color amarillo para el nombre de usuario */
-    font-weight: 700;  /* Opcional: hacer el nombre más destacado */
+    color: #fcee0a;
+    font-weight: 700;
 }
 
 button {
@@ -152,7 +152,7 @@ button {
 
 .news {
     position: relative;
-    padding-bottom: 30px; /* Para que no se sobreponga */
+    padding-bottom: 30px;
 }
 
 .news__decor-bottom {
@@ -174,9 +174,9 @@ button {
     background-image: url("/static/images/razor.svg");
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center bottom; /* Para centrar la imagen */
-    width: 105vw; /* Hace que ocupe todo el ancho de la pantalla */
-    height: 48px; /* Ajusta la altura según sea necesario */
+    background-position: center bottom;
+    width: 105vw;
+    height: 48px;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -194,10 +194,10 @@ button {
     font-family: 'BlenderPro-Bold', sans-serif;
     font-size: 16px;
     display: flex;
-    flex-direction: column; /* Ahora los botones estarán en columna */
-    align-items: center; /* Centra los botones en el eje horizontal */
-    gap: 20px; /* Espaciado entre los botones */
-    margin-top: 20px; /* Espacio superior */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px; 
 }
 
 .botones #iniciar-viaje, #cambiar-estado, #finalizar-viaje{
@@ -286,6 +286,8 @@ button {
     margin: 0;
     padding: 0 0 0 24px;
 }
+
+
 /* Estilo para los formularios de login y register */
 
 .login-navbar {
@@ -312,15 +314,15 @@ button {
 }
 
 .login-navbar li {
-    margin: 0 10px; /* Añadido margen entre los elementos del navbar */
+    margin: 0 10px;
 }
 
 .login-navbar img {
-    width: 120px; /* Ajusta el tamaño del logo */
+    width: 120px; 
 }
 
 .login-navbar span {
-    color: #000; /* Color blanco para el texto */
+    color: #000;
 }
 
 .login-container {
@@ -437,16 +439,15 @@ input[type='submit']:hover {
 }
 
 
-/* Estilo para el autocompletado */
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
     background-color: transparent !important; 
-    border-radius: 0 !important;               /* Elimina el border-radius */
-    color: inherit;                            /* Hereda el color del texto */
-    box-shadow: 0 0 0px 1000px transparent inset !important; /* Elimina el sombreado */
+    border-radius: 0 !important;
+    color: inherit;
+    box-shadow: 0 0 0px 1000px transparent inset !important; 
 }
 
-/* También puedes aplicarlo a los select y otros inputs */
 textarea:-webkit-autofill,
 select:-webkit-autofill {
     background-color: transparent !important;

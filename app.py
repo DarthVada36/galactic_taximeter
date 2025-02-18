@@ -13,7 +13,7 @@ taximetro = Taximetro()
 bcrypt = Bcrypt(app)
 app.secret_key = 'supersecretkey'
 
-# Configurar Flask-Login
+# Flask-Login
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
 
@@ -69,7 +69,6 @@ def logout():
     return redirect(url_for("login"))
 
 # Rutas del taxímetro
-
 @app.route('/get_prices', methods=['GET'])
 def get_prices():
     return jsonify(taximetro.precios)
@@ -98,9 +97,9 @@ def change_state():
 
     respuesta = taximetro.cambiar_estado(nuevo_estado)
 
-    # Asegurar que se devuelven siempre los valores correctos
+    
     return jsonify({
-        "estado": taximetro.estado_actual,  # El estado correcto
+        "estado": taximetro.estado_actual, 
         "tarifa_acumulada": round(respuesta.get("tarifa_acumulada", 0.00), 2)
     })
 
@@ -116,9 +115,9 @@ def stop_trip():
 
 def actualizar_tarifa():
     while True:
-        tarifa_actualizada = taximetro.obtener_tarifa_acumulada()  # Obtener tarifa actual
+        tarifa_actualizada = taximetro.obtener_tarifa_acumulada()  
         socketio.emit("update_tarifa", {"tarifa": tarifa_actualizada})  
-        time.sleep(0.5)  # Actualiza cada 0.5 segundos
+        time.sleep(0.5)
 
 if __name__ == '__main__':
     import threading
